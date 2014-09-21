@@ -1,0 +1,27 @@
+{
+  "name": "pg.progress-bars",
+  "version": "0.0.1",
+  "authors": [
+    "Pavel Grynchenko <psdcoder@gmail.com>"
+  ],
+  "description": "Boilerplate for simplify development of angular modules",
+  "main": "dist/module.js",
+  "keywords": [
+    "angular",
+    "module",
+    "boilerplate",
+    "ng",
+    "pg"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.2.25"
+  }
+}

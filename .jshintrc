@@ -1,0 +1,28 @@
+{
+    "bitwise": true,
+    "camelcase": true,
+    "curly": true,
+    "eqeqeq": true,
+    "forin": true,
+    "freeze": true,
+    "immed": true,
+    "indent": 4,
+    "latedef": "nofunc",
+    "newcap": true,
+    "noarg": true,
+    "noempty": true,
+    "nonbsp": true,
+    "plusplus": false,
+    "quotmark": "single",
+    "undef": true,
+    "unused": true,
+    "strict": true,
+    "maxparams": 5,
+    "maxlen": false,
+    "eqnull": true,
+    "browser": true,
+    "devel": true,
+    "globals": {
+        "angular": true
+    }
+}

@@ -1,0 +1,5 @@
+node_modules
+bower_components
+src/vendors
+gulpfile-dev.js
+.idea

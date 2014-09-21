@@ -1,0 +1,39 @@
+{
+  "name": "pg.progress-bars",
+  "version": "0.0.1",
+  "description": "Multiple progress bars module for angular js",
+  "main": "dist/pg.progress-bars.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "gulp": "~3.8.8",
+    "gulp-git": "~0.5.1",
+    "gulp-header": "~1.1.1",
+    "gulp-jshint": "~1.8.4",
+    "gulp-karma": "~0.0.4",
+    "gulp-load-plugins": "~0.6.0",
+    "gulp-notify": "~1.6.0",
+    "gulp-plumber": "~0.6.5",
+    "gulp-rename": "~1.2.0",
+    "gulp-uglify": "~1.0.1",
+    "gulp-webserver": "~0.8.1",
+    "jshint-stylish": "~1.0.0",
+    "karma": "~0.12.23"
+  },
+  "devDependencies": {
+    "gulp-concat": "~2.4.1",
+    "gulp-clean": "~0.3.1"
+  },
+  "scripts": {
+    "test": "karma"
+  },
+  "keywords": [
+    "progress",
+    "bar",
+    "angular",
+    "pg"
+  ],
+  "author": "Pavel Grinchenko <psdcoder@gmail.com>",
+  "license": "MIT"
+}

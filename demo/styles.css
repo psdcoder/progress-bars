@@ -1,0 +1,25 @@
+.progress-container {
+    position: relative;
+    width: 990px;
+    margin: 0 auto;
+}
+
+/* Progress bar styles */
+.progress__container {
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+}
+
+.progress__container_showing .progress__bar {
+    display: block;
+}
+
+.progress__bar {
+    display: none;
+    height: 1px;
+    background-color: #53b4ca;
+    width: 0;
+}
