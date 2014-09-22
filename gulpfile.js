@@ -3,6 +3,7 @@
 
 var gulp = require('gulp');
 var path = require('path');
+var fs = require('fs');
 var $ = require('gulp-load-plugins')();
 var stylish = require('jshint-stylish');
 var bowerPackage = require('./bower.json');
@@ -51,6 +52,7 @@ gulp.task('js', ['clean'], function() {
         .pipe($.concat(paths.outputFilename))
         .pipe($.header(banner))
         .pipe(gulp.dest(paths.outputFolder))
+        .pipe($.ngAnnotate())
         .pipe($.concat(paths.outputFilename))
         .pipe($.rename({ suffix: '.min' }))
         .pipe($.uglify())

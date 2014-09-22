@@ -22,8 +22,10 @@
                 return this;
             },
             $get: function () {
-                this.getClasses = function () {
-                    return classNames;
+                return {
+                    getClasses: function () {
+                        return classNames;
+                    }
                 };
             }
         };

@@ -4,6 +4,120 @@ angular.module('pg.progress-bars', []);
 (function () {
     'use strict';
 
+    angular
+        .module('pg.progress-bars')
+        .directive('progressBar', progressBarDirective);
+
+    function progressBarDirective(ProgressBars, ProgressBarsStorage) {
+        var providerClassNames = ProgressBars.getClasses();
+        var classNames = {
+            container: providerClassNames.container || 'progress__container',
+            bar: providerClassNames.bar || 'progress__bar',
+            barShowing: providerClassNames.barShowing || 'progress__container_showing'
+        };
+
+        return {
+            restrict: 'EA',
+            replace: true,
+            template: '<div class="' + classNames.container + '"><div class="' + classNames.bar + '"></div></div>',
+            scope: {
+                name: '@',
+                minimum: '@',
+                speed: '@',
+                trickleRate: '@',
+                trickleSpeed: '@',
+                animation: '@'
+            },
+            link: function ($scope, $element) {
+                if (!$scope.name) {
+                    throw new Error('You must specify "name" property for progress bar');
+                }
+
+                $element.attr('id', 'progress-bar-' + $scope.name);
+
+                var progressBar = new window.ProgressBar(
+                    $scope.name,
+                    {
+                        container: $element,
+                        bar: $element.find('.' + classNames.bar)
+                    },
+                    {
+                        minimum: +$scope.minimum,
+                        speed: +$scope.speed,
+                        ease: $scope.animation,
+                        trickleRate: +$scope.trickleRate,
+                        trickleSpeed: +$scope.trickleSpeed,
+                        showingClass: classNames.barShowing
+                    }
+                );
+
+                ProgressBarsStorage.register(progressBar);
+            }
+        };
+    }
+})();
+
+(function () {
+    'use strict';
+
+    angular
+        .module('pg.progress-bars')
+        .provider('ProgressBars', ProgressBarsProvider);
+
+    function ProgressBarsProvider() {
+        var classNames = {};
+
+        return {
+            setContainerClass: function (className) {
+                classNames.container = className;
+                return this;
+            },
+            setBarClass: function (className) {
+                classNames.bar = className;
+                return this;
+            },
+            setShowingClass: function (className) {
+                classNames.barShowing = className;
+                return this;
+            },
+            $get: function () {
+                return {
+                    getClasses: function () {
+                        return classNames;
+                    }
+                };
+            }
+        };
+    }
+})();
+
+(function () {
+    'use strict';
+
+    angular
+        .module('pg.progress-bars')
+        .service('ProgressBarsStorage', ProgressBarsStorageService);
+
+    function ProgressBarsStorageService() {
+        var progressBars = {};
+
+        this.register = function (progressBar) {
+            progressBars[progressBar.name] = progressBar;
+        };
+
+        this.get = function(name) {
+            if (!progressBars[name]) {
+                return null;
+            }
+
+            return progressBars[name];
+        };
+    }
+})();
+
+(function () {
+    'use strict';
+
     window.ProgressBar = ProgressBar;
 
     function ProgressBar(name, elements, options) {
@@ -132,7 +246,7 @@ angular.module('pg.progress-bars', []);
         }
 
         if (typeof value !== 'number') {
-            value = (100 - this.current) * this._clamp(Math.random() * this.current, 10, 95);
+            value = this._clamp(this._trickle() * 3, 10, 95);
         }
 
         this.current = this._clamp(this.current + value, 0, 99.4);
@@ -146,116 +260,4 @@ angular.module('pg.progress-bars', []);
 
         return this;
     };
-})();
-
-(function () {
-    'use strict';
-
-    angular
-        .module('pg.progress-bars')
-        .directive('progressBar', progressBarDirective);
-
-    function progressBarDirective(ProgressBars, ProgressBarsStorage) {
-        var providerClassNames = ProgressBars.getClasses();
-        var classNames = {
-            container: providerClassNames.container || 'progress__container',
-            bar: providerClassNames.bar || 'progress__bar',
-            barShowing: providerClassNames.barShowing || 'progress__container_showing'
-        };
-
-        return {
-            restrict: 'EA',
-            replace: true,
-            template: '<div class="' + classNames.container + '"><div class="' + classNames.bar + '"></div></div>',
-            scope: {
-                name: '@',
-                minimum: '@',
-                speed: '@',
-                trickleRate: '@',
-                trickleSpeed: '@',
-                animation: '@'
-            },
-            link: function ($scope, $element) {
-                if (!$scope.name) {
-                    throw new Error('You must specify "name" property for progress bar');
-                }
-
-                $element.attr('id', 'progress-bar-' + $scope.name);
-
-                var progressBar = new window.ProgressBar(
-                    $scope.name,
-                    {
-                        container: $element,
-                        bar: $element.find('.' + classNames.bar)
-                    },
-                    {
-                        minimum: +$scope.minimum,
-                        speed: +$scope.speed,
-                        ease: $scope.animation,
-                        trickleRate: +$scope.trickleRate,
-                        trickleSpeed: +$scope.trickleSpeed,
-                        showingClass: classNames.barShowing
-                    }
-                );
-
-                ProgressBarsStorage.register(progressBar);
-            }
-        };
-    }
-})();
-
-(function () {
-    'use strict';
-
-    angular
-        .module('pg.progress-bars')
-        .provider('ProgressBars', ProgressBarsProvider);
-
-    function ProgressBarsProvider() {
-        var classNames = {};
-
-        return {
-            setContainerClass: function (className) {
-                classNames.container = className;
-                return this;
-            },
-            setBarClass: function (className) {
-                classNames.bar = className;
-                return this;
-            },
-            setShowingClass: function (className) {
-                classNames.barShowing = className;
-                return this;
-            },
-            $get: function () {
-                this.getClasses = function () {
-                    return classNames;
-                };
-            }
-        };
-    }
-})();
-
-(function () {
-    'use strict';
-
-    angular
-        .module('pg.progress-bars')
-        .service('ProgressBarsStorage', ProgressBarsStorageService);
-
-    function ProgressBarsStorageService() {
-        var progressBars = {};
-
-        this.register = function (progressBar) {
-            progressBars[progressBar.name] = progressBar;
-        };
-
-        this.get = function(name) {
-            if (!progressBars[name]) {
-                return null;
-            }
-
-            return progressBars[name];
-        };
-    }
 })();

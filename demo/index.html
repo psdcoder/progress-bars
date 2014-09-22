@@ -6,13 +6,22 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/demo/favicon.png"/>
         <link rel="stylesheet" href="/demo/styles.css"/>
     </head>
-    <body ng-controller="">
+    <body ng-controller="ProgressBarsCtrl as pbc">
         <div class="content-container">
-            <div class="progress-container"></div>
-            {{ test }}
+            <progress-bar name="main"></progress-bar>
+            <div class="buttons-group">
+                <button ng-click="pbc.start('main')">Start</button>
+                <button ng-click="pbc.stop('main')">Stop</button>
+                <button ng-click="pbc.done('main')">Done</button>
+                <button ng-click="pbc.inc('main')">Increase</button>
+                <input type="text" placeholder="value to set" ng-model="setValue"/>
+                <button ng-click="pbc.set('main', setValue)">Set</button>
+                <button ng-click="setValue = pbc.get('main')">Get</button>
+            </div>
             <h1>Inspired by NProgress.js</h1>
         </div>
 
+        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
         <script src="../bower_components/angular/angular.min.js"></script>
         <script src="../dist/pg.progress-bars.min.js"></script>
         <script src="/demo/main.js"></script>

@@ -6,11 +6,8 @@
 
 /* Progress bar styles */
 .progress__container {
-    position: absolute;
-    left: 0;
-    bottom: -2px;
     width: 100%;
-    height: 1px;
+    height: 5px;
 }
 
 .progress__container_showing .progress__bar {
@@ -19,7 +16,7 @@
 
 .progress__bar {
     display: none;
-    height: 1px;
+    height: 5px;
     background-color: #53b4ca;
     width: 0;
 }

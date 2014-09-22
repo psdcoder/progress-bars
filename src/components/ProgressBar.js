@@ -129,7 +129,7 @@
         }
 
         if (typeof value !== 'number') {
-            value = (100 - this.current) * this._clamp(Math.random() * this.current, 10, 95);
+            value = this._clamp(Math.random() * (100 - this.current) / 3, 10, 95);
         }
 
         this.current = this._clamp(this.current + value, 0, 99.4);

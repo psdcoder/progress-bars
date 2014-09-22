@@ -23,5 +23,8 @@
   ],
   "devDependencies": {
     "angular": "~1.2.25"
+  },
+  "dependencies": {
+    "jquery": "~2.1.1"
   }
 }
