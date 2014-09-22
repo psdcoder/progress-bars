@@ -21,7 +21,7 @@ var paths = {
     outputFilename: bowerPackage.name + '.js',
     demoFolder: 'demo',
     test: [
-        'test/spec/**/*.spec.js'
+        'test/unit/**/*.js'
     ]
 };
 var banner = [
@@ -66,9 +66,20 @@ gulp.task('lint', function () {
 });
 
 gulp.task('test', function() {
-    return gulp.src(paths.src.concat(paths.test))
+    return gulp.src(
+            [
+                'bower_components/angular/angular.js',
+                'src/components/ProgressBar.js',
+                'src/pg.progress-bars.module.js',
+                'src/services/ProgressBars.service.js',
+                'src/services/ProgressBarsStorage.service.js',
+                'src/directives/progressBar.directive.js'
+            ].concat(paths.test)
+        )
         .pipe($.plumber())
-        .pipe($.karma({ configFile: 'test/karma.conf.js' }))
+        .pipe($.karma({
+            configFile: 'test/karma.conf.js'
+        }))
         .on('error', function(err) {
             throw err;
         });

@@ -4,7 +4,7 @@ module.exports = function (config) {
 
     config.set({
         basePath : '',
-        autoWatch : false,
+        autoWatch : true,
         frameworks: ['jasmine'],
         browsers : ['PhantomJS'],
         plugins : [
