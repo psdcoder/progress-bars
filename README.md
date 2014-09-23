@@ -1,1 +1,1 @@
-# [pg.progress-bars](https://github.com/PSDCoder/pg.progress-bars)
+# [progress-bars](https://github.com/PSDCoder/progress-bars)
