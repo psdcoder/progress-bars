@@ -150,7 +150,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('release', ['bump'], function () {
-    gulp.start('release-tag');
+    gulp.start('release-push');
 });
 
 function getBumpedVersion(file, key) {
