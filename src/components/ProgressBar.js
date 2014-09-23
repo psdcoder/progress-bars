@@ -121,6 +121,10 @@
         return this;
     };
 
+    ProgressBar.prototype.isInProgress = function () {
+        return !this.toStop;
+    };
+
     ProgressBar.prototype.stop = function () {
         this.toStop = true;
     };

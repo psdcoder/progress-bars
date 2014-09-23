@@ -1,15 +1,16 @@
 {
   "name": "pg.progress-bars",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "authors": [
-    "Pavel Grynchenko <psdcoder@gmail.com>"
+    "Pavel Grinchenko <psdcoder@gmail.com>"
   ],
-  "description": "Boilerplate for simplify development of angular modules",
-  "main": "dist/module.js",
+  "description": "Flexible progress bars module for Angular.js",
+  "main": "dist/pg.progress-bars.js",
   "keywords": [
     "angular",
     "module",
-    "boilerplate",
+    "progress",
+    "bar",
     "ng",
     "pg"
   ],

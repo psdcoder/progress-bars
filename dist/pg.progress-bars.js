@@ -1,4 +1,4 @@
-/*! pg.progress-bars v0.0.1 | Pavel Grynchenko <psdcoder@gmail.com> | (c) 2014 */
+/*! pg.progress-bars v0.0.0 | Pavel Grynchenko <psdcoder@gmail.com> | (c) 2014 */
 angular.module('pg.progress-bars', []);
 
 (function () {
@@ -124,6 +124,10 @@ angular.module('pg.progress-bars', []);
         return this;
     };
 
+    ProgressBar.prototype.isInProgress = function () {
+        return !this.toStop;
+    };
+
     ProgressBar.prototype.stop = function () {
         this.toStop = true;
     };
@@ -201,6 +205,10 @@ angular.module('pg.progress-bars', []);
                 );
 
                 ProgressBarsStorage.register(progressBar);
+
+                $scope.$on('$destroy', function () {
+                    ProgressBarsStorage.unregister(progressBar);
+                });
             }
         };
     }
@@ -252,6 +260,12 @@ angular.module('pg.progress-bars', []);
 
         this.register = function (progressBar) {
             progressBars[progressBar.name] = progressBar;
+        };
+
+        this.unregister = function (progressBar) {
+            if (progressBars[progressBar.name]) {
+                delete progressBars[progressBar.name];
+            }
         };
 
         this.get = function(name) {

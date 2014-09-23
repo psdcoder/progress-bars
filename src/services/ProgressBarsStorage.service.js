@@ -12,6 +12,12 @@
             progressBars[progressBar.name] = progressBar;
         };
 
+        this.unregister = function (progressBar) {
+            if (progressBars[progressBar.name]) {
+                delete progressBars[progressBar.name];
+            }
+        };
+
         this.get = function(name) {
             if (!progressBars[name]) {
                 return null;

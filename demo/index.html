@@ -2,34 +2,89 @@
 <html ng-app="demo-app">
     <head>
         <meta charset="UTF-8">
-        <title>Module demo</title>
+        <title>progress-bars angular.js module</title>
         <link rel="icon" type="image/png" sizes="16x16" href="/demo/favicon.png"/>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="/demo/styles.css"/>
     </head>
     <body ng-controller="ProgressBarsCtrl as pbc">
+        <progress-bar name="header" class="progress__container_position_fixed"></progress-bar>
         <div class="main-container">
-            <progress-bar name="main"></progress-bar>
-            <div class="buttons-group">
-                <button class="button" ng-click="pbc.start('main')">Start</button>
-                <button class="button" ng-click="pbc.stop('main')">Stop</button>
-                <button class="button" ng-click="pbc.done('main')">Done</button>
-                <button class="button" ng-click="pbc.inc('main')">Increase</button>
-                <input class="input" type="text" placeholder="value to set" ng-model="setValues.main"/>
-                <button class="button" ng-click="pbc.set('main', setValues.main)">Set</button>
-                <button class="button" ng-click="setValues.main = pbc.get('main')">Get</button>
-            </div>
-            <ul>
-                <li>Independent from $digest cycle</li>
-                <li>Many progress bars on page</li>
-                <li>Full control of each bar</li>
-                <li>Custom container</li>
-            </ul>
-            <h1>Inspired by NProgress.js</h1>
+            <header class="main-header">
+                <h1 class="page-title page-title_centered"><a href="http://psdcoder.github.io/progress-bars/demo/index.html">progress-bars</a></h1>
+                <small class="page-subtitle page-subtitle_centered">module for <a href="https://angularjs.org/" target="_blank">Angular.js</a></small>
+            </header>
+            <section class="page-section">
+                <h2 class="section-header">Main features:</h2>
+                <ul class="features-list">
+                    <li class="features-list__item">Independent from <b>$digest</b> cycle (don't run unnecessary cycles)</li>
+                    <li class="features-list__item">Can place many progress bars on one page</li>
+                    <li class="features-list__item">Full control of each bar</li>
+                    <li class="features-list__item">Custom progress-bar container</li>
+                    <li class="features-list__item">Simple customization via css</li>
+                </ul>
+            </section>
+            <section class="page-section">
+                <h2 class="section-header">Demo:</h2>
+                <h5>Top progress bar:</h5>
+                <div class="buttons-group">
+                    <button class="button" ng-click="pbc.start('header')">Start</button>
+                    <button class="button" ng-click="pbc.stop('header')">Stop</button>
+                    <button class="button" ng-click="pbc.done('header')">Done</button>
+                    <button class="button" ng-click="pbc.inc('header')">Increase</button>
+                    <input class="input" type="text" placeholder="value to set" ng-model="setValues.header"/>
+                    <button class="button" ng-click="pbc.set('header', setValues.header)">Set</button>
+                    <button class="button" ng-click="setValues.header = pbc.get('header')">Get</button>
+                </div>
+                <h5>Progress bar in current container:</h5>
+                <div class="progress-bar-container">
+                    <progress-bar name="first" class="progress__container_color_red"></progress-bar>
+                </div>
+                <div class="buttons-group">
+                    <button class="button" ng-click="pbc.start('first')">Start</button>
+                    <button class="button" ng-click="pbc.stop('first')">Stop</button>
+                    <button class="button" ng-click="pbc.done('first')">Done</button>
+                    <button class="button" ng-click="pbc.inc('first')">Increase</button>
+                    <input class="input" type="text" placeholder="value to set" ng-model="setValues.first"/>
+                    <button class="button" ng-click="pbc.set('first', setValues.first)">Set</button>
+                    <button class="button" ng-click="setValues.first = pbc.get('first')">Get</button>
+                </div>
+                <h5>One more progress bar with different styles:</h5>
+                <div class="progress-bar-container">
+                    <progress-bar name="second" class="progress__container_backgrounded progress__container_color_green"></progress-bar>
+                </div>
+                <div class="buttons-group">
+                    <button class="button" ng-click="pbc.start('second')">Start</button>
+                    <button class="button" ng-click="pbc.stop('second')">Stop</button>
+                    <button class="button" ng-click="pbc.done('second')">Done</button>
+                    <button class="button" ng-click="pbc.inc('second')">Increase</button>
+                    <input class="input" type="text" placeholder="value to set" ng-model="setValues.second"/>
+                    <button class="button" ng-click="pbc.set('second', setValues.second)">Set</button>
+                    <button class="button" ng-click="setValues.second = pbc.get('second')">Get</button>
+                </div>
+            </section>
+            <section class="page-section">
+                <h2 class="section-header">Installation:</h2>
+                <h5>Via bower (prefered):</h5>
+                <pre>bower install --save pg.progress-bars</pre>
+                <h5>Download zip package:</h5>
+                <div class="download-button-container">
+                    <a class="button button_type_download" href="https://github.com/PSDCoder/progress-bars/archive/master.zip" target="_blank">Download</a>
+                </div>
+            </section>
+            <footer class="main-footer">
+                <iframe src="http://ghbtns.com/github-btn.html?user=PSDCoder&type=follow" allowtransparency="true" frameborder="0" scrolling="0" width="132" height="20"></iframe>
+                <iframe src="http://ghbtns.com/github-btn.html?user=PSDCoder&repo=progress-bars&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-via="psd_coder" data-hashtags="angular,progress-bar">Tweet</a>
+                <p class="footer-text footer-text_position_right">
+                    Created by <a href="https://github.com/PSDCoder" target="_blank">Pavel Grinchenko</a>. Inspired by <a href="http://ricostacruz.com/nprogress/" target="_blank">nprogress.js</a>
+                </p>
+            </footer>
         </div>
-
-        <!--<script src="../bower_components/jquery/dist/jquery.min.js"></script>-->
         <script src="../bower_components/angular/angular.min.js"></script>
         <script src="../dist/pg.progress-bars.min.js"></script>
         <script src="/demo/main.js"></script>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter24754154 = new Ya.Metrika({id:24754154, webvisor:true, clickmap:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/24754154" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
     </body>
 </html>

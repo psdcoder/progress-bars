@@ -3,6 +3,7 @@
 
 var gulp = require('gulp');
 var path = require('path');
+var os = require('os');
 var fs = require('fs');
 var $ = require('gulp-load-plugins')();
 var stylish = require('jshint-stylish');
@@ -13,6 +14,28 @@ var server = {
     host: 'localhost',
     port: 8000
 };
+var browserApp = (function () {
+    //also can be 'firefox'
+    var platformBrowserApp;
+
+    switch (os.platform()) {
+        case 'linux':
+            platformBrowserApp = 'google-chrome';
+            break;
+        case 'darwin':
+            platformBrowserApp = 'open /Applications/Google\\ Chrome.app';
+            break;
+        case 'win32':
+            platformBrowserApp = 'chrome';
+            break;
+        default:
+            $.util.log($.util.colors.red('Unsupported dev platform'));
+            process.exit();
+            break;
+    }
+
+    return platformBrowserApp;
+})();
 var paths = {
     src: [
         path.join('src', bowerPackage.name + '.module.js'),
@@ -92,7 +115,7 @@ gulp.task('server', ['run-server', 'css'], function () {
         .pipe($.plumber())
         .pipe($.open('', {
             url: 'http://' + server.host + ':' + server.port + '/demo/index.html',
-            app: 'google-chrome'
+            app: browserApp
         }));
 });
 
@@ -142,10 +165,10 @@ function getBumpedVersion(file, key) {
 
     return cached;
 }
-//gulp.task('release-push', ['release-tag'], function () {
-//    $.git.push('origin', 'master', {args: '--tags'}).end();
-//});
 
+gulp.task('release-push', ['release-tag'], function () {
+    $.git.push('origin', 'master', {args: '--tags'}).end();
+});
 
 gulp.task('release-tag', ['release-commit'], function (cb) {
     var version = 'v' + getBumpedVersion();
