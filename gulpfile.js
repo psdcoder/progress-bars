@@ -87,7 +87,16 @@ gulp.task('test', function() {
         });
 });
 
-gulp.task('server', ['js'], function () {
+gulp.task('server', ['run-server', 'css'], function () {
+    return gulp.src(paths.demoFolder + '/index.html')
+        .pipe($.plumber())
+        .pipe($.open('', {
+            url: 'http://' + server.host + ':' + server.port + '/demo/index.html',
+            app: 'google-chrome'
+        }));
+});
+
+gulp.task('run-server', ['js', 'watch'], function () {
     return gulp.src(__dirname)
         .pipe($.plumber())
         .pipe($.webserver({
@@ -97,6 +106,24 @@ gulp.task('server', ['js'], function () {
             fallback: 'demo/index.html'
         }))
         .pipe($.notify('Dev server was started on: http://' + server.host + ':' + server.port));
+});
+
+gulp.task('css', function () {
+    return gulp.src(path.join(paths.demoFolder, '*.less'))
+        .pipe($.plumber())
+        .pipe($.less())
+        .pipe($.autoprefixer({
+            browsers: ['last 2 versions']
+        }))
+        .pipe($.rename({
+            extname: '.css'
+        }))
+        .pipe(gulp.dest(paths.demoFolder));
+});
+
+gulp.task('watch', function () {
+    gulp.watch(paths.src, ['js']);
+    gulp.watch(path.join(paths.demoFolder, '*.less'), ['css']);
 });
 
 gulp.task('release', ['bump'], function () {

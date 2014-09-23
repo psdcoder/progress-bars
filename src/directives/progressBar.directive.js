@@ -36,7 +36,7 @@
                     $scope.name,
                     {
                         container: $element,
-                        bar: $element.find('.' + classNames.bar)
+                        bar: $element.find('div')
                     },
                     {
                         minimum: +$scope.minimum,

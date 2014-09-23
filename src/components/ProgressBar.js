@@ -19,9 +19,9 @@
         this.options = {
             minimum: options.minimum || 8,
             speed: options.speed || 250,
-            animation: options.animation || 'ease',
+            animation: options.animation || 'ease-out',
             trickleRate: options.trickleRate || 2,
-            trickleSpeed: options.trickleSpeed || 500,
+            trickleSpeed: options.trickleSpeed || 300,
             showingClass: options.showingClass
         };
         this.current = null;
@@ -34,10 +34,8 @@
 
     ProgressBar.prototype._hide = function () {
         this.elements.container.removeClass(this.options.showingClass);
-        this.elements.bar.css({
-            opacity: 0,
-            width: 0
-        });
+        this.elements.bar.css('opacity', 0);
+        this.elements.bar.css('width', 0);
     };
 
     ProgressBar.prototype._clamp = function (value, min, max) {
@@ -72,15 +70,19 @@
         this.current = value === 100 ? null : value;
 
         setTimeout(function () {
-            self.elements.bar.css(self._positioning(value, self.options.speed, self.options.animation));
+            var calculatedCssProperties = self._positioning(value, self.options.speed, self.options.animation);
+
+            for (var property in calculatedCssProperties) {
+                if (calculatedCssProperties.hasOwnProperty(property)) {
+                    self.elements.bar.css(property, calculatedCssProperties[property]);
+                }
+            }
         }, 0);
 
         if (value === 100) {
             setTimeout(function () {
-                self.elements.bar.css({
-                    transition: 'all ' + self.options.speed + 'ms linear',
-                    opacity: 0
-                });
+                self.elements.bar.css('transition', 'all ' + self.options.speed + 'ms linear');
+                self.elements.bar.css('opacity', 0);
 
                 setTimeout(function () {
                     self._hide();

@@ -1,0 +1,78 @@
+@mainColor: #54a299;
+@inputLineHeight: 16px;
+@inputPaddingsVertical: 10px;
+@inputPaddingsHorizontal: 20px;
+
+body {
+    background-color: #f1f1f1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.button {
+    padding: @inputPaddingsVertical @inputPaddingsHorizontal;
+    border: 1px solid darken(@mainColor, 3%);
+    border-radius: 3px;
+    margin: 0;
+
+    color: #fff;
+    background-color: @mainColor;
+    font-size: @inputLineHeight;
+    line-height: @inputLineHeight;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        background-color: darken(@mainColor, 5%);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.input {
+    border: 1px solid darken(@mainColor, 3%);
+    padding: @inputPaddingsVertical @inputPaddingsHorizontal / 2;
+    margin: 0;
+    border-radius: 3px;
+
+    line-height: @inputLineHeight;
+    vertical-align: top;
+
+    &:hover,
+    &:focus {
+        border-color: darken(@mainColor, 15%);
+        box-shadow: inset 0 0 5px rgba(red(@mainColor), green(@mainColor), blue(@mainColor), 0.5);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.main-container {
+    position: relative;
+    width: 990px;
+    margin: 0 auto;
+}
+
+/* Progress bar styles */
+.progress__container {
+    width: 100%;
+    height: 2px;
+}
+
+.progress__container_showing .progress__bar {
+    display: block;
+}
+
+.progress__bar {
+    display: none;
+    height: 2px;
+    background-color: @mainColor;
+    width: 0;
+}

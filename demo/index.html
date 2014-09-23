@@ -7,21 +7,27 @@
         <link rel="stylesheet" href="/demo/styles.css"/>
     </head>
     <body ng-controller="ProgressBarsCtrl as pbc">
-        <div class="content-container">
+        <div class="main-container">
             <progress-bar name="main"></progress-bar>
             <div class="buttons-group">
-                <button ng-click="pbc.start('main')">Start</button>
-                <button ng-click="pbc.stop('main')">Stop</button>
-                <button ng-click="pbc.done('main')">Done</button>
-                <button ng-click="pbc.inc('main')">Increase</button>
-                <input type="text" placeholder="value to set" ng-model="setValue"/>
-                <button ng-click="pbc.set('main', setValue)">Set</button>
-                <button ng-click="setValue = pbc.get('main')">Get</button>
+                <button class="button" ng-click="pbc.start('main')">Start</button>
+                <button class="button" ng-click="pbc.stop('main')">Stop</button>
+                <button class="button" ng-click="pbc.done('main')">Done</button>
+                <button class="button" ng-click="pbc.inc('main')">Increase</button>
+                <input class="input" type="text" placeholder="value to set" ng-model="setValues.main"/>
+                <button class="button" ng-click="pbc.set('main', setValues.main)">Set</button>
+                <button class="button" ng-click="setValues.main = pbc.get('main')">Get</button>
             </div>
+            <ul>
+                <li>Independent from $digest cycle</li>
+                <li>Many progress bars on page</li>
+                <li>Full control of each bar</li>
+                <li>Custom container</li>
+            </ul>
             <h1>Inspired by NProgress.js</h1>
         </div>
 
-        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <!--<script src="../bower_components/jquery/dist/jquery.min.js"></script>-->
         <script src="../bower_components/angular/angular.min.js"></script>
         <script src="../dist/pg.progress-bars.min.js"></script>
         <script src="/demo/main.js"></script>
