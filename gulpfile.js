@@ -174,18 +174,17 @@ gulp.task('release-tag', ['release-commit'], function (cb) {
     var version = 'v' + getBumpedVersion();
     var message = 'Release ' + version;
 
-    $.git.tag(version, message);
-    cb();
+    $.git.tag(version, message, cb);
 });
 
-gulp.task('release-commit', function () {
+gulp.task('release-commit', function (cb) {
     var version = 'v' + getBumpedVersion();
     var message = 'Release ' + version;
 
-    return gulp.src('./')
+    gulp.src('./')
         .pipe($.git.add())
         .pipe($.git.commit(message))
-        .pipe($.git.checkout('HEAD'));
+        .pipe($.git.checkout('HEAD', cb));
 });
 
 gulp.task('bump', function (cb) {
