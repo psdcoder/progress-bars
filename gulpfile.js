@@ -184,8 +184,7 @@ gulp.task('release-commit', function () {
 
     return gulp.src('./')
         .pipe($.git.add())
-        .pipe($.git.commit(message))
-        .pipe($.git.checkout('HEAD'));
+        .pipe($.git.commit(message));
 });
 
 gulp.task('bump', function (cb) {

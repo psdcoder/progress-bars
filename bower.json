@@ -1,6 +1,6 @@
 {
   "name": "pg.progress-bars",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "authors": [
     "Pavel Grinchenko <psdcoder@gmail.com>"
   ],
@@ -23,6 +23,6 @@
     "tests"
   ],
   "dependencies": {
-      "angular": "~1.2"
+    "angular": "~1.2"
   }
 }
