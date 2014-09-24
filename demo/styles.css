@@ -129,18 +129,23 @@ pre {
   font-style: italic;
   text-align: center;
 }
-.features-list {
+.features-list,
+.usage-list {
   margin: 20px 0 20px 40px;
   padding: 0;
   list-style: square;
   color: #d6d6d6;
 }
-.features-list__item {
+.features-list__item,
+.usage-list__item {
   margin-bottom: 10px;
   color: #707070;
   font-size: 15px;
   font-weight: 300;
   line-height: 22.5px;
+}
+.usage-list {
+  list-style: decimal;
 }
 .main-footer {
   margin-top: 30px;

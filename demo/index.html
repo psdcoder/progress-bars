@@ -5,6 +5,7 @@
         <title>progress-bars angular.js module</title>
         <link rel="icon" type="image/png" sizes="16x16" href="./favicon.png"/>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css"/>
         <link rel="stylesheet" href="./styles.css"/>
     </head>
     <body ng-controller="ProgressBarsCtrl as pbc">
@@ -65,12 +66,41 @@
             </section>
             <section class="page-section">
                 <h2 class="section-header">Installation:</h2>
-                <h5>Via bower (prefered):</h5>
-                <pre>bower install --save pg.progress-bars</pre>
+                <h5>Via bower (prefered way):</h5>
+                <pre><code class="bash">bower install --save pg.progress-bars</code></pre>
                 <h5>Download zip package:</h5>
                 <div class="download-button-container">
                     <a class="button button_type_download" href="https://github.com/PSDCoder/progress-bars/archive/master.zip" target="_blank">Download</a>
                 </div>
+            </section>
+            <section class="page-section">
+                <h2 class="section-header">Basic usage:</h2>
+                <ol class="usage-list">
+                    <li class="usage-list__item">
+                        Add module as dependency to your app:
+                        <pre><code class="javascript">angular.module('your-app', ['pg.progress-bars']);</code></pre>
+                    </li>
+                    <li class="usage-list__item">
+                        Add progress bar directive to template:
+                        <pre><code class="html">&lt;progress-bar name="some-name"&gt;&lt;/progress-bar&gt;</code></pre>
+                    </li>
+                    <li class="usage-list__item">
+                        Now you can inject <b>ProgressBarsStorage</b> service and get full control of your progress bars.
+                        <br/>
+                        Just get it by name:
+                        <pre><code class="javascript">var progressBar = ProgressBarsStorage.get('some-name');
+
+progressBar.start();
+
+setTimeout(function () {
+    //async result
+    progressBar.done();
+}, 1500);</code></pre>
+                    </li>
+                    <li class="usage-list__item">
+                        <a href="https://github.com/PSDCoder/progress-bars/blob/master/README.md">Full API</a> of ProgressBar at your disposal.
+                    </li>
+                </ol>
             </section>
             <footer class="main-footer">
                 <iframe src="http://ghbtns.com/github-btn.html?user=PSDCoder&type=follow" allowtransparency="true" frameborder="0" scrolling="0" width="132" height="20"></iframe>
@@ -84,7 +114,12 @@
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
         <script src="../dist/pg.progress-bars.min.js"></script>
         <script src="./main.js"></script>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+        <script>
+            hljs.initHighlightingOnLoad();
+            //twitter follow button
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+        </script>
         <!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter24754154 = new Ya.Metrika({id:24754154, webvisor:true, clickmap:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/24754154" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
     </body>
 </html>
