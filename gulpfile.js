@@ -48,15 +48,22 @@ var paths = {
         'test/unit/**/*.js'
     ]
 };
-var banner = [
-    '/*! ',
-    bowerPackage.name + ' ',
-    'v' + bowerPackage.version + ' | ',
-    bowerPackage.authors.join(', ') + ' | (c) ' + new Date().getFullYear(),
-    ' */',
-    '\n'
-].join('');
 
+function getBanner() {
+    //hack for always last version
+    bowerPackage = null;
+    delete require.cache[path.resolve('./bower.json')];
+    bowerPackage = require('./bower.json');
+
+    return [
+        '/*! ',
+        bowerPackage.name + ' ',
+        'v' + bowerPackage.version + ' | ',
+        bowerPackage.authors.join(', ') + ' | (c) ' + new Date().getFullYear(),
+        ' */',
+        '\n'
+    ].join('');
+}
 
 gulp.task('default', [
     'lint',
@@ -73,13 +80,13 @@ gulp.task('js', ['clean'], function() {
     return gulp.src(paths.src)
         .pipe($.plumber())
         .pipe($.concat(paths.outputFilename))
-        .pipe($.header(banner))
+        .pipe($.header(getBanner()))
         .pipe(gulp.dest(paths.outputFolder))
         .pipe($.ngAnnotate())
         .pipe($.concat(paths.outputFilename))
         .pipe($.rename({ suffix: '.min' }))
         .pipe($.uglify())
-        .pipe($.header(banner))
+        .pipe($.header(getBanner()))
         .pipe(gulp.dest(paths.outputFolder));
 });
 
@@ -149,45 +156,50 @@ gulp.task('watch', function () {
     gulp.watch(path.join(paths.demoFolder, '*.less'), ['css']);
 });
 
-gulp.task('release', ['bump'], function () {
-    gulp.start('release-push');
+
+/* RELEASE TASKS */
+gulp.task('release', ['release:checkout-develop']);
+
+gulp.task('release:checkout-develop', ['release:push'], function (cb) {
+    $.git.checkout('develop', cb);
 });
 
-function getBumpedVersion(file, key) {
-    file = file || './bower.json';
-    key = key || 'version';
-
-    var cached = null;
-
-    if (cached === null) {
-        cached = JSON.parse(fs.readFileSync(file))[key];
-    }
-
-    return cached;
-}
-
-gulp.task('release-push', ['release-tag'], function () {
-    $.git.push('origin', 'master', {args: '--tags'}).end();
+gulp.task('release:push', ['release:add-tag'], function (cb) {
+    $.git.push('origin', 'master', { args: '--tags' }, cb).end();
 });
 
-gulp.task('release-tag', ['release-commit'], function (cb) {
-    var version = 'v' + getBumpedVersion();
-    var message = 'Release ' + version;
-
-    $.git.tag(version, message, cb);
+gulp.task('release:add-tag', ['release:merge'], function (cb) {
+    $.git.tag(getVersion(), releaseMessage(), cb);
 });
 
-gulp.task('release-commit', function (cb) {
-    var version = 'v' + getBumpedVersion();
-    var message = 'Release ' + version;
-
-    gulp.src('./')
-        .pipe($.git.add())
-        .pipe($.git.commit(message))
-        .pipe($.git.checkout('HEAD', cb));
+gulp.task('release:merge', ['release:checkout-master'], function (cb) {
+    $.git.merge('develop', cb);
 });
 
-gulp.task('bump', function (cb) {
+gulp.task('release:checkout-master', ['release:commit'], function (cb) {
+    $.git.checkout('master', cb);
+});
+
+gulp.task('release:commit', ['release:add'], function () {
+    return gulp.src('./')
+        .pipe($.git.commit(releaseMessage()));
+});
+
+gulp.task('release:add', ['release:build'], function () {
+    return gulp.src('./')
+        .pipe($.git.add({ args: '--all' }));
+});
+
+gulp.task('release:build', ['release:bump'], function (cb) {
+    gulp.start(['js'])
+        .on('task_stop', function (info) {
+            if (info.task && info.task === 'js') {
+                cb();
+            }
+        });
+});
+
+gulp.task('release:bump', function (cb) {
     var type;
     var allowedTypes = ['major', 'minor', 'patch', 'prerelease'];
 
@@ -207,3 +219,24 @@ gulp.task('bump', function (cb) {
         .pipe($.bump({ type: allowedTypes[type] }))
         .pipe(gulp.dest('.'));
 });
+
+function getBumpedVersion(file, key) {
+    file = file || './bower.json';
+    key = key || 'version';
+
+    var cached = null;
+
+    if (cached === null) {
+        cached = JSON.parse(fs.readFileSync(file))[key];
+    }
+
+    return cached;
+}
+
+function getVersion() {
+    return 'v' + getBumpedVersion();
+}
+
+function releaseMessage() {
+    return 'Release ' + getVersion();
+}
