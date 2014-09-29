@@ -25,6 +25,9 @@ a:focus {
   border: 0 solid #367daa;
   border-radius: 3px;
   margin: 0;
+  height: 44.8px;
+  font-size: 14px;
+  line-height: 16.8px;
 }
 .button:hover,
 .input:hover,
@@ -40,16 +43,19 @@ a:focus {
   padding: 14px 28px;
   color: #fff;
   background-color: #3d8ec1;
-  font-size: 14px;
-  line-height: 14px;
   cursor: pointer;
 }
-.button:hover,
 .button:focus {
+  background-color: #3780ae;
+}
+.button:hover {
   background-color: #5099c8;
 }
 .button:active {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.button::-moz-focus-inner {
+  border: 0;
 }
 .button_type_download {
   border: none;
@@ -61,11 +67,10 @@ a:focus {
   color: #fff;
 }
 .input {
-  padding: 14px 14px 13px;
+  padding: 14px 14px 14px;
   padding: 13px 14px 12px;
   border: 1px solid #cbcbcb;
   color: #3d8ec1;
-  line-height: 13px;
   vertical-align: top;
 }
 .input:hover,

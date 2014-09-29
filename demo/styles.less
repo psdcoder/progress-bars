@@ -5,6 +5,7 @@
 @containerWidth: 990px;
 
 @inputFontSize: 14px;
+@inputLineHeight: @inputFontSize * 1.2;
 @inputPaddingsVertical: 14px;
 @inputPaddingsHorizontal: 28px;
 @inputBorderWidth: 0;
@@ -42,6 +43,10 @@ a {
     border: @inputBorderWidth solid darken(@mainAccentColor, 6%);
     border-radius: @inputBorderRadius;
     margin: 0;
+    height: @inputPaddingsVertical * 2 + @inputLineHeight;
+
+    font-size: @inputFontSize;
+    line-height: @inputLineHeight;
 
     &:hover,
     &:focus {
@@ -58,17 +63,22 @@ a {
 
     color: #fff;
     background-color: @mainAccentColor;
-    font-size: @inputFontSize;
-    line-height: @inputFontSize;
     cursor: pointer;
 
-    &:hover,
     &:focus {
+        background-color: darken(@mainAccentColor, 5%);
+    }
+
+    &:hover {
         background-color: lighten(@mainAccentColor, 5%);
     }
 
     &:active {
         box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    &::-moz-focus-inner {
+        border: 0;
     }
 
     &_type_download {
@@ -84,7 +94,7 @@ a {
 }
 
 .input {
-    padding: @inputPaddingsVertical @inputPaddingsHorizontal / 2 @inputPaddingsVertical - 1px;
+    padding: @inputPaddingsVertical @inputPaddingsHorizontal / 2 @inputPaddingsVertical;
 
     & when(@inputBorderWidth = 0) {
         padding: (@inputPaddingsVertical - 1) @inputPaddingsHorizontal / 2 (@inputPaddingsVertical - 2);
@@ -93,7 +103,6 @@ a {
     }
 
     color: @mainAccentColor;
-    line-height: @inputFontSize - 1px;
     vertical-align: top;
 
 
