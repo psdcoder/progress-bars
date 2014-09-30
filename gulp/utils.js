@@ -2,7 +2,7 @@ var os = require('os');
 var path = require('path');
 var fs = require('fs');
 var $ = require('gulp-load-plugins')();
-var bowerPackagePath = '../bower.json';
+var bowerPackagePath = path.join(__dirname, '..', 'bower.json');
 var processArguments = process.argv.splice(2);
 
 module.exports = {
