@@ -1,5 +1,6 @@
 var os = require('os');
 var path = require('path');
+var fs = require('fs');
 var $ = require('gulp-load-plugins')();
 var bowerPackagePath = '../bower.json';
 var processArguments = process.argv.splice(2);
