@@ -33,7 +33,7 @@
     "karma-spec-reporter": "0.0.13"
   },
   "scripts": {
-    "test": "karma"
+    "test": "gulp test"
   },
   "keywords": [
     "progress",
