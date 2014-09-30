@@ -1,46 +1,50 @@
 {
-  "name": "pg.progress-bars",
-  "version": "0.0.1",
-  "description": "Multiple progress bars module for angular js",
-  "main": "dist/pg.progress-bars.js",
-  "directories": {
-    "test": "test"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "gulp": "~3.8.8",
-    "gulp-autoprefixer": "^1.0.1",
-    "gulp-bump": "~0.1.11",
-    "gulp-clean": "~0.3.1",
-    "gulp-concat": "~2.4.1",
-    "gulp-git": "~0.5.1",
-    "gulp-header": "~1.1.1",
-    "gulp-jshint": "~1.8.4",
-    "gulp-karma": "~0.0.4",
-    "gulp-less": "^1.3.6",
-    "gulp-load-plugins": "~0.6.0",
-    "gulp-ng-annotate": "~0.3.3",
-    "gulp-notify": "~1.6.0",
-    "gulp-open": "^0.2.8",
-    "gulp-plumber": "~0.6.5",
-    "gulp-rename": "~1.2.0",
-    "gulp-uglify": "~1.0.1",
-    "gulp-webserver": "~0.8.1",
-    "jshint-stylish": "~1.0.0",
-    "karma": "^0.12.23",
-    "karma-jasmine": "~0.2.0",
-    "karma-phantomjs-launcher": "^0.1.4",
-    "karma-spec-reporter": "0.0.13"
-  },
-  "scripts": {
-    "test": "gulp test"
-  },
-  "keywords": [
-    "progress",
-    "bar",
-    "angular",
-    "pg"
-  ],
-  "author": "Pavel Grinchenko <psdcoder@gmail.com>",
-  "license": "MIT"
+    "name": "pg.progress-bars",
+    "version": "0.0.1",
+    "description": "Multiple progress bars module for angular js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/PSDCoder/progress-bars"
+    },
+    "main": "dist/pg.progress-bars.js",
+    "directories": {
+        "test": "test"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "gulp": "~3.8.8",
+        "gulp-autoprefixer": "^1.0.1",
+        "gulp-bump": "~0.1.11",
+        "gulp-clean": "~0.3.1",
+        "gulp-concat": "~2.4.1",
+        "gulp-git": "~0.5.1",
+        "gulp-header": "~1.1.1",
+        "gulp-jshint": "~1.8.4",
+        "gulp-karma": "~0.0.4",
+        "gulp-less": "^1.3.6",
+        "gulp-load-plugins": "~0.6.0",
+        "gulp-ng-annotate": "~0.3.3",
+        "gulp-notify": "~1.6.0",
+        "gulp-open": "^0.2.8",
+        "gulp-plumber": "~0.6.5",
+        "gulp-rename": "~1.2.0",
+        "gulp-uglify": "~1.0.1",
+        "gulp-webserver": "~0.8.1",
+        "jshint-stylish": "~1.0.0",
+        "karma": "^0.12.23",
+        "karma-jasmine": "~0.2.0",
+        "karma-phantomjs-launcher": "^0.1.4",
+        "karma-spec-reporter": "0.0.13"
+    },
+    "scripts": {
+        "test": "gulp test"
+    },
+    "keywords": [
+        "progress",
+        "bar",
+        "angular",
+        "pg"
+    ],
+    "author": "Pavel Grinchenko <psdcoder@gmail.com>",
+    "license": "MIT"
 }
