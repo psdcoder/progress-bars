@@ -33,6 +33,7 @@
             showingClass: options.showingClass
         };
         this.current = null;
+        this.toStop = true;
     }
 
     ProgressBar.prototype._show = function () {
