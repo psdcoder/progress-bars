@@ -91,8 +91,8 @@ Directive will be replaced by its template. For customization different progress
     name="main" 
     minimum="15"
     speed="350"
-    trickleRate="4"
-    trickleSpeed="400"
+    trickle-rate="4"
+    trickle-speed="400"
     animation="linear">
 </progress-bar>
 ```

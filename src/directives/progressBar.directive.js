@@ -41,7 +41,7 @@
                     {
                         minimum: +$scope.minimum,
                         speed: +$scope.speed,
-                        ease: $scope.animation,
+                        animation: $scope.animation,
                         trickleRate: +$scope.trickleRate,
                         trickleSpeed: +$scope.trickleSpeed,
                         showingClass: classNames.barShowing
