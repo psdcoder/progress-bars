@@ -2,10 +2,11 @@ var os = require('os');
 var path = require('path');
 var $ = require('gulp-load-plugins')();
 var bowerPackagePath = '../bower.json';
+var processArguments = process.argv.splice(2);
 
 module.exports = {
     getArguments: function () {
-        return process.argv.splice(2);
+        return processArguments;
     },
     loadBowerJson: function () {
         delete require.cache[path.resolve(bowerPackagePath)];
