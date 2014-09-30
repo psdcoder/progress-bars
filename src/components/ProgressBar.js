@@ -127,6 +127,8 @@
 
     ProgressBar.prototype.stop = function () {
         this.toStop = true;
+
+        return this;
     };
 
     ProgressBar.prototype.inc = function (value) {
@@ -139,7 +141,9 @@
         }
 
         this.current = this._clamp(this.current + value, 0, 99.4);
-        return this.set(this.current);
+        this.set(this.current);
+
+        return this;
     };
 
     ProgressBar.prototype.done = function () {
