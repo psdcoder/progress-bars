@@ -3,9 +3,9 @@
 
     angular
         .module('pg.progress-bars')
-        .provider('ProgressBars', ProgressBarsProvider);
+        .provider('ProgressBarsSettings', ProgressBarsSettingsProvider);
 
-    function ProgressBarsProvider() {
+    function ProgressBarsSettingsProvider() {
         var classNames = {};
 
         return {

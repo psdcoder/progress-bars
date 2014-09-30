@@ -54,8 +54,8 @@ setTimeout(function () {
 # Module's components
 
 * [**progressBar directive**](#progressbar-directive) - directive for adding progress bar to the page.
-* [**ProgressBar constructor**](#progressbar-constructor) - main progress bar constructor.
-* [**ProgressBars provider**](#progressbars-provider) provider - allows to define base classes for progress bar
+* [**ProgressBarFactory**](#progressbar-factory) - main progress bar constructor.
+* [**ProgressBarsSettings provider**](#progressbars-provider) provider - allows to define base classes for progress bar
 * [**ProgressBarsStorage service**](#progressbarsstorage-service) - all [**<progress-bar></progress-bar> directives**](#progressbar-directive) registers in this storage.
 
 ## progressBar directive
@@ -97,10 +97,10 @@ Directive will be replaced by its template. For customization different progress
 </progress-bar>
 ```
 
-## ProgressBar constructor
+## ProgressBar factory
 
-Don't use it directly, it will be constructed when you use ```html <progress-bar></progress-bar>``` directive.  
-Then you can get instance from [**ProgressBarsStorage**](#progressbarsstorage-service) and use methods.  
+Don't use it directly, it will be constructed when you use ```html <progress-bar></progress-bar>``` directive.
+Then you can get instance of ProgressBar class from [**ProgressBarsStorage**](#progressbarsstorage-service) and use methods.  
 You can combine method calls to chain (only for non-get methods). Example:
 ```javascript
 progressBar.start().inc().inc();
@@ -118,7 +118,7 @@ progressBar.start().inc().inc();
 |**inc**|```{number} [value]```|```this```|Increase value of progress bar to specified value or random value if it not specified|```progressBar.inc(); progressBar.inc(15)```|
 |**isInProgress**||```{boolean} - is running value```|Whether running or not progress bar now|```progressBar.isInProgress()```|
 
-## ProgressBars provider
+## ProgressBarsSettings provider
 
 You can use this methods only in config block.
 All methods returns ```this``` so you can chaining methods calls.
@@ -126,9 +126,9 @@ For default values I used [BEM](http://bem.info/method/definitions/) methodology
 
 |Method|Params|Default Value|Description|Example|
 |------|------|-------------|-----------|-------|
-|**setContainerClass**|```{string} className```|```progress__container```|Set container's class.|```ProgressBarsProvider.setContainerClass('progress-container')```|
-|**setBarClass**|```{string} className```|```progress__bar```|Set progress bar's class.|```ProgressBarsProvider.setContainerClass('progress-bar')```|
-|**setShowingClass**|```{string} className```|```progress__container_showing```|Set container's class which will be added when progress bar is running.|```ProgressBarsProvider.setShowingClass('progress-bar-showing')```|
+|**setContainerClass**|```{string} className```|```progress__container```|Set container's class.|```ProgressBarsSettingsProvider.setContainerClass('progress-container')```|
+|**setBarClass**|```{string} className```|```progress__bar```|Set progress bar's class.|```ProgressBarsSettingsProvider.setContainerClass('progress-bar')```|
+|**setShowingClass**|```{string} className```|```progress__container_showing```|Set container's class which will be added when progress bar is running.|```ProgressBarsSettingsProvider.setShowingClass('progress-bar-showing')```|
 
 ## ProgressBarsStorage service
 This service has only one public method: **get**. With this method you can get [**ProgressBar instance**](#progressbar-constructor) and use its methods.  

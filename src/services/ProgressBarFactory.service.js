@@ -1,7 +1,15 @@
 (function () {
     'use strict';
 
-    window.ProgressBar = ProgressBar;
+    angular
+        .module('pg.progress-bars')
+        .factory('ProgressBarFactory', ProgressBarFactory);
+
+    function ProgressBarFactory() {
+        return function(name, elements, options) {
+            return new ProgressBar(name, elements, options);
+        }
+    }
 
     function ProgressBar(name, elements, options) {
         if (!name) {

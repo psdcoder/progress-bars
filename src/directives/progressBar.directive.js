@@ -5,8 +5,8 @@
         .module('pg.progress-bars')
         .directive('progressBar', progressBarDirective);
 
-    function progressBarDirective(ProgressBars, ProgressBarsStorage) {
-        var providerClassNames = ProgressBars.getClasses();
+    function progressBarDirective(ProgressBarsSettings, ProgressBarsStorage, ProgressBarFactory) {
+        var providerClassNames = ProgressBarsSettings.getClasses();
         var classNames = {
             container: providerClassNames.container || 'progress__container',
             bar: providerClassNames.bar || 'progress__bar',
@@ -32,7 +32,7 @@
 
                 $element.attr('id', 'progress-bar-' + $scope.name);
 
-                var progressBar = new window.ProgressBar(
+                var progressBar = ProgressBarFactory(
                     $scope.name,
                     {
                         container: $element,
