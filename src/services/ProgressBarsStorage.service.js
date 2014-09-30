@@ -8,11 +8,11 @@
     function ProgressBarsStorageService() {
         var progressBars = {};
 
-        this.register = function (progressBar) {
+        this._register = function (progressBar) {
             progressBars[progressBar.name] = progressBar;
         };
 
-        this.unregister = function (progressBar) {
+        this._unregister = function (progressBar) {
             if (progressBars[progressBar.name]) {
                 delete progressBars[progressBar.name];
             }

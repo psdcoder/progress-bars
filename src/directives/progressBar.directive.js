@@ -48,10 +48,10 @@
                     }
                 );
 
-                ProgressBarsStorage.register(progressBar);
+                ProgressBarsStorage._register(progressBar);
 
                 $scope.$on('$destroy', function () {
-                    ProgressBarsStorage.unregister(progressBar);
+                    ProgressBarsStorage._unregister(progressBar);
                 });
             }
         };
