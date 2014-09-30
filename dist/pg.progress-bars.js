@@ -1,4 +1,4 @@
-/*! pg.progress-bars v0.1.1 | Pavel Grinchenko <psdcoder@gmail.com> | (c) 2014 */
+/*! pg.progress-bars v0.1.2 | Pavel Grinchenko <psdcoder@gmail.com> | (c) 2014 */
 angular.module('pg.progress-bars', []);
 
 (function () {
@@ -44,7 +44,7 @@ angular.module('pg.progress-bars', []);
                     {
                         minimum: +$scope.minimum,
                         speed: +$scope.speed,
-                        ease: $scope.animation,
+                        animation: $scope.animation,
                         trickleRate: +$scope.trickleRate,
                         trickleSpeed: +$scope.trickleSpeed,
                         showingClass: classNames.barShowing
