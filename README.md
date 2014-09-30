@@ -106,7 +106,7 @@ You can combine method calls to chain (only for non-get methods). Example:
 progressBar.start().inc().inc();
 ```
 
-### Public methods description
+#### Public methods description
 
 |Method|Params|Returns|Description|Example|
 |------|------|-------|-----------|-------|
