@@ -1,5 +1,5 @@
 # [progress-bars](https://github.com/PSDCoder/progress-bars)
----
+
 # Main features
 
 * Independent from **$digest** cycle (don't run unnecessary cycles)
@@ -14,7 +14,7 @@ You can see demo on [this page](http://psdcoder.github.io/progress-bars/demo/ind
 
 # Installation
 
-* Via bower (prefered way)
+* Via bower (preferred way)
 
 ```bash
 bower install --save pg.progress-bars
@@ -29,13 +29,13 @@ bower install --save pg.progress-bars
 angular.module('your-app', ['pg.progress-bars']);
 ```
 
-2. Add progress bar directive to template:
+2. Add [**progress bar directive**](#progressbar-directive) to template:
 
 ```html
 <progress-bar name="some-name"></progress-bar>
 ```
 
-3. Now you can inject ProgressBarsStorage service and get full control of your progress bars.  
+3. Now you can inject [**ProgressBarsStorage**](#progressbarsstorage-service) service and get full control of your progress bars.  
 Just get it by name:
 
 ```javascript
@@ -49,42 +49,42 @@ setTimeout(function () {
 }, 1500);
 ```
 
-4. Default progress bar styles you can find in [demo/styles.css](https://github.com/PSDCoder/progress-bars/blob/master/demo/styles.css)
+4. Default progress bar styles you can find in [demo/styles.css](https://github.com/PSDCoder/progress-bars/blob/master/demo/styles.css) (at the bottom of file).
 
 # Module's components
 
-* [**progressBar**](#) - directive.
-* [**ProgressBar**](#) - main progress bar constructor.
-* [**ProgressBars**](#) provider - allows to define base classes for progress bar
-* [**ProgressBarsStorage**](#) service - all **<progress-bar></progress-bar>** directives registers in this storage.
+* [**progressBar directive**](#progressbar-directive) - directive for adding progress bar to the page.
+* [**ProgressBar constructor**](#progressbar-constructor) - main progress bar constructor.
+* [**ProgressBars provider**](#progressbars-provider) provider - allows to define base classes for progress bar
+* [**ProgressBarsStorage service**](#progressbarsstorage-service) - all [**<progress-bar></progress-bar> directives**](#progressbar-directive) registers in this storage.
 
 ## progressBar directive
 Directive will be replaced by its template. For customization different progress bars you can add classes to it. It will be merged with template classes.
 
-### Usage
+#### Usage
 
 ```html
 <progress-bar name="main"></progress-bar>
 ```
 
-### Directive params
+#### Directive params
 
 |Name|Binding Type|Default value|Description|Example|
 |----|------------|-------------|-----------|-------|
-|name|```@```||You must specify name of each progress bar for get it then through **ProgressBarsStorage**](#)|```<progress-bar name="main"></progress-bar>```|
+|name|```@```||You must specify name of each progress bar for get it then through [**ProgressBarsStorage**](#progressbarsstorage-service)|```<progress-bar name="main"></progress-bar>```|
 |minimum|```@```|```8```|Minimum value from which started progress bar|```<progress-bar name="main" minimum="25"></progress-bar>```|
 |speed|```@```|```250```|Speed of each width increasing|```<progress-bar name="main" speed="500"></progress-bar>```|
 |trickleRate|```@```|```2```|Multiplier of each increasing of width when progress bar is running|```<progress-bar name="main" trickle-rate="5"></progress-bar>```|
 |trickleSpeed|```@```|```300```|Multiplier of each increasing of width when progress bar is running|```<progress-bar name="main" trickle-rate="5"></progress-bar>```|
 |animation|```@```|```'ease-out'```|Type of css animation|```<progress-bar name="main" animation="linear"></progress-bar>```|
 
-### Base progress bar template structure
+#### Base progress bar template structure
 
 ```html
 <div class="progress__container"><div class="progress__bar"></div></div>
 ```
 
-### Full example
+#### Full example
 
 ```html
 <progress-bar 
@@ -100,7 +100,7 @@ Directive will be replaced by its template. For customization different progress
 ## ProgressBar constructor
 
 Don't use it directly, it will be constructed when you use ```html <progress-bar></progress-bar>``` directive.  
-Then you can get instance from [**ProgressBarsStorage**](#) and use methods.  
+Then you can get instance from [**ProgressBarsStorage**](#progressbarsstorage-service) and use methods.  
 You can combine method calls to chain (only for non-get methods). Example:
 ```javascript
 progressBar.start().inc().inc();
@@ -131,8 +131,8 @@ For default values I used [BEM](http://bem.info/method/definitions/) methodology
 |**setShowingClass**|```{string} className```|```progress__container_showing```|Set container's class which will be added when progress bar is running.|```ProgressBarsProvider.setShowingClass('progress-bar-showing')```|
 
 ## ProgressBarsStorage service
-This service has only one public method: **get**. With this method you can get [**ProgressBar instance**](#) and use its methods.  
-Example: 
+This service has only one public method: **get**. With this method you can get [**ProgressBar instance**](#progressbar-constructor) and use its methods.  
+**Example**: 
 
 ```javascript
 var mainProgressBar = ProgressBarsStorage.get('main');
