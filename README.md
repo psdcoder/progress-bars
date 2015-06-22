@@ -32,7 +32,7 @@ angular.module('your-app', ['pg.progress-bars']);
 2. Add [**progress bar directive**](#progressbar-directive) to template:
 
 ```html
-<progress-bar name="some-name"></progress-bar>
+<pg-progress-bar name="some-name"></pg-progress-bar>
 ```
 
 3. Now you can inject [**ProgressBarsStorage**](#progressbarsstorage-service) service and get full control of your progress bars.  
@@ -56,7 +56,7 @@ setTimeout(function () {
 * [**progressBar directive**](#progressbar-directive) - directive for adding progress bar to the page.
 * [**ProgressBarFactory**](#progressbar-factory) - main progress bar constructor.
 * [**ProgressBarsSettings provider**](#progressbars-provider) provider - allows to define base classes for progress bar
-* [**ProgressBarsStorage service**](#progressbarsstorage-service) - all [**<progress-bar></progress-bar> directives**](#progressbar-directive) registers in this storage.
+* [**ProgressBarsStorage service**](#progressbarsstorage-service) - all [**<pg-progress-bar></pg-progress-bar> directives**](#progressbar-directive) registers in this storage.
 
 ## progressBar directive
 Directive will be replaced by its template. For customization different progress bars you can add classes to it. It will be merged with template classes.
@@ -64,19 +64,19 @@ Directive will be replaced by its template. For customization different progress
 #### Usage
 
 ```html
-<progress-bar name="main"></progress-bar>
+<pg-progress-bar name="main"></pg-progress-bar>
 ```
 
 #### Directive params
 
 |Name|Binding Type|Default value|Description|Example|
 |----|------------|-------------|-----------|-------|
-|name|```@```||You must specify name of each progress bar for get it then through [**ProgressBarsStorage**](#progressbarsstorage-service)|```<progress-bar name="main"></progress-bar>```|
-|minimum|```@```|```8```|Minimum value from which started progress bar|```<progress-bar name="main" minimum="25"></progress-bar>```|
-|speed|```@```|```250```|Speed of each width increasing|```<progress-bar name="main" speed="500"></progress-bar>```|
-|trickleRate|```@```|```2```|Multiplier of each increasing of width when progress bar is running|```<progress-bar name="main" trickle-rate="5"></progress-bar>```|
-|trickleSpeed|```@```|```300```|Multiplier of each increasing of width when progress bar is running|```<progress-bar name="main" trickle-rate="5"></progress-bar>```|
-|animation|```@```|```'ease-out'```|Type of css animation|```<progress-bar name="main" animation="linear"></progress-bar>```|
+|name|```@```||You must specify name of each progress bar for get it then through [**ProgressBarsStorage**](#progressbarsstorage-service)|```<pg-progress-bar name="main"></pg-progress-bar>```|
+|minimum|```@```|```8```|Minimum value from which started progress bar|```<pg-progress-bar name="main" minimum="25"></pg-progress-bar>```|
+|speed|```@```|```250```|Speed of each width increasing|```<pg-progress-bar name="main" speed="500"></pg-progress-bar>```|
+|trickleRate|```@```|```2```|Multiplier of each increasing of width when progress bar is running|```<pg-progress-bar name="main" trickle-rate="5"></pg-progress-bar>```|
+|trickleSpeed|```@```|```300```|Multiplier of each increasing of width when progress bar is running|```<pg-progress-bar name="main" trickle-rate="5"></pg-progress-bar>```|
+|animation|```@```|```'ease-out'```|Type of css animation|```<pg-progress-bar name="main" animation="linear"></pg-progress-bar>```|
 
 #### Base progress bar template structure
 
@@ -87,19 +87,19 @@ Directive will be replaced by its template. For customization different progress
 #### Full example
 
 ```html
-<progress-bar 
-    name="main" 
+<pg-progress-bar
+    name="main"
     minimum="15"
     speed="350"
     trickle-rate="4"
     trickle-speed="400"
     animation="linear">
-</progress-bar>
+</pg-progress-bar>
 ```
 
 ## ProgressBar factory
 
-Don't use it directly, it will be constructed when you use ```html <progress-bar></progress-bar>``` directive.
+Don't use it directly, it will be constructed when you use ```html <pg-progress-bar></pg-progress-bar>``` directive.
 Then you can get instance of ProgressBar class from [**ProgressBarsStorage**](#progressbarsstorage-service) and use methods.  
 You can combine method calls to chain (only for non-get methods). Example:
 ```javascript
@@ -132,7 +132,7 @@ For default values I used [BEM](http://bem.info/method/definitions/) methodology
 
 ## ProgressBarsStorage service
 This service has only one public method: **get**. With this method you can get [**ProgressBar instance**](#progressbar-constructor) and use its methods.  
-**Example**: 
+**Example**:
 
 ```javascript
 var mainProgressBar = ProgressBarsStorage.get('main');
