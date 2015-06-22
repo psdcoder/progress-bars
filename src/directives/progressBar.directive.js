@@ -3,7 +3,7 @@
 
     angular
         .module('pg.progress-bars')
-        .directive('progressBar', progressBarDirective);
+        .directive('pgProgressBar', progressBarDirective);
 
     function progressBarDirective(ProgressBarsSettings, ProgressBarsStorage, ProgressBarFactory) {
         var providerClassNames = ProgressBarsSettings.getClasses();

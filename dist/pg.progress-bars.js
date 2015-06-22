@@ -1,4 +1,4 @@
-/*! pg.progress-bars v0.1.2 | Pavel Grinchenko <psdcoder@gmail.com> | (c) 2014 */
+/*! pg.progress-bars v0.1.2 | Pavel Grinchenko <psdcoder@gmail.com> | (c) 2015 */
 angular.module('pg.progress-bars', []);
 
 (function () {

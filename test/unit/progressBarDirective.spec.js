@@ -14,13 +14,13 @@ describe('progressBar directive', function () {
         $rootScope = _$rootScope_;
         scope = $rootScope;
         ProgressBarsStorage = $injector.get('ProgressBarsStorage');
-        directiveElement = $compile('<progress-bar name="test" minimum="15" speed="350" trickle-rate="4" trickle-speed="400" animation="linear"></progress-bar>')(scope);
+        directiveElement = $compile('<pg-progress-bar name="test" minimum="15" speed="350" trickle-rate="4" trickle-speed="400" animation="linear"></pg-progress-bar>')(scope);
     }));
 
     describe('ProgressBar instantiating', function () {
         it('Should throw error when not passed name attribute', function () {
             expect(function errorFunctionWrapper() {
-                $compile('<progress-bar></progress-bar>')($rootScope);
+                $compile('<pg-progress-bar></pg-progress-bar>')($rootScope);
             }).toThrowError(/specify/);
         });
 
