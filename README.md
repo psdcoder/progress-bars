@@ -1,4 +1,4 @@
-# [progress-bars](https://github.com/PSDCoder/progress-bars) ![Travis build status](https://api.travis-ci.org/PSDCoder/progress-bars.svg)
+# [progress-bars](https://github.com/PSDCoder/progress-bars) [![Build Status](https://travis-ci.org/PSDCoder/progress-bars.svg?branch=master)](https://travis-ci.org/PSDCoder/progress-bars)
 
 ## Changes history you can find [here](https://github.com/PSDCoder/progress-bars/blob/master/CHANGES.md) 
 
