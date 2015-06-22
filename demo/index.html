@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="./styles.css"/>
     </head>
     <body ng-controller="ProgressBarsCtrl as pbc">
-        <progress-bar name="header" class="progress__container_position_fixed"></progress-bar>
+        <pg-progress-bar name="header" class="progress__container_position_fixed"></pg-progress-bar>
         <div class="main-container">
             <header class="main-header">
                 <h1 class="page-title page-title_centered"><a href="http://psdcoder.github.io/progress-bars/demo/index.html">progress-bars</a></h1>
@@ -39,7 +39,7 @@
                 </div>
                 <h5>Progress bar in current container:</h5>
                 <div class="progress-bar-container">
-                    <progress-bar name="first" class="progress__container_color_red"></progress-bar>
+                    <pg-progress-bar name="first" class="progress__container_color_red"></pg-progress-bar>
                 </div>
                 <div class="buttons-group">
                     <button class="button" ng-click="pbc.start('first')">Start</button>
@@ -52,7 +52,7 @@
                 </div>
                 <h5>One more progress bar with different styles:</h5>
                 <div class="progress-bar-container">
-                    <progress-bar name="second" class="progress__container_backgrounded progress__container_color_green"></progress-bar>
+                    <pg-progress-bar name="second" class="progress__container_backgrounded progress__container_color_green"></pg-progress-bar>
                 </div>
                 <div class="buttons-group">
                     <button class="button" ng-click="pbc.start('second')">Start</button>
@@ -82,7 +82,7 @@
                     </li>
                     <li class="usage-list__item">
                         Add progress bar directive to template:
-                        <pre><code class="html">&lt;progress-bar name="some-name"&gt;&lt;/progress-bar&gt;</code></pre>
+                        <pre><code class="html">&lt;pg-progress-bar name="some-name"&gt;&lt;/pg-progress-bar&gt;</code></pre>
                     </li>
                     <li class="usage-list__item">
                         Now you can inject <b>ProgressBarsStorage</b> service and get full control of your progress bars.

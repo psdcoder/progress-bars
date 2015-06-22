@@ -1,4 +1,4 @@
-/*! pg.progress-bars v0.1.2 | Pavel Grinchenko <psdcoder@gmail.com> | (c) 2014 */
+/*! pg.progress-bars v0.1.2 | Pavel Grinchenko <psdcoder@gmail.com> | (c) 2015 */
 angular.module('pg.progress-bars', []);
 
 (function () {
@@ -6,7 +6,7 @@ angular.module('pg.progress-bars', []);
 
     angular
         .module('pg.progress-bars')
-        .directive('progressBar', progressBarDirective);
+        .directive('pgProgressBar', progressBarDirective);
 
     function progressBarDirective(ProgressBarsSettings, ProgressBarsStorage, ProgressBarFactory) {
         var providerClassNames = ProgressBarsSettings.getClasses();
