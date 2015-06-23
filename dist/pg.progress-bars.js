@@ -8,6 +8,8 @@ angular.module('pg.progress-bars', []);
         .module('pg.progress-bars')
         .directive('pgProgressBar', progressBarDirective);
 
+    progressBarDirective.$inject = ['ProgressBarsSettings', 'ProgressBarsStorage', 'ProgressBarFactory'];
+
     function progressBarDirective(ProgressBarsSettings, ProgressBarsStorage, ProgressBarFactory) {
         var providerClassNames = ProgressBarsSettings.getClasses();
         var classNames = {
@@ -67,6 +69,8 @@ angular.module('pg.progress-bars', []);
     angular
         .module('pg.progress-bars')
         .factory('ProgressBarFactory', ProgressBarFactory);
+
+    ProgressBarFactory.$inject = [];
 
     function ProgressBarFactory() {
         return function(name, elements, options) {
@@ -234,6 +238,8 @@ angular.module('pg.progress-bars', []);
         .module('pg.progress-bars')
         .provider('ProgressBarsSettings', ProgressBarsSettingsProvider);
 
+    ProgressBarsSettingsProvider.$inject = [];
+
     function ProgressBarsSettingsProvider() {
         var classNames = {};
 
@@ -268,6 +274,8 @@ angular.module('pg.progress-bars', []);
         .module('pg.progress-bars')
         .service('ProgressBarsStorage', ProgressBarsStorageService);
 
+    ProgressBarsStorageService.$inject = [];
+    
     function ProgressBarsStorageService() {
         var progressBars = {};
 

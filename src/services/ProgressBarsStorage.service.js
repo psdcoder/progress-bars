@@ -5,6 +5,8 @@
         .module('pg.progress-bars')
         .service('ProgressBarsStorage', ProgressBarsStorageService);
 
+    ProgressBarsStorageService.$inject = [];
+    
     function ProgressBarsStorageService() {
         var progressBars = {};
 
