@@ -1,6 +1,6 @@
 {
   "name": "pg.progress-bars",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "authors": [
     "Pavel Grinchenko <psdcoder@gmail.com>"
   ],
@@ -26,9 +26,9 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.2"
+    "angular": "^1.2"
   },
   "devDependencies": {
-    "angular-mocks": "~1.2.25"
+    "angular-mocks": "^1.2.25"
   }
 }
