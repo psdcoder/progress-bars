@@ -15,7 +15,6 @@
 
         return {
             restrict: 'EA',
-            replace: true,
             template: '<div class="' + classNames.container + '"><div class="' + classNames.bar + '"></div></div>',
             scope: {
                 name: '@',

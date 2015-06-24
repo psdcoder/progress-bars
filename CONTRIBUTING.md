@@ -4,6 +4,7 @@
 * Work in `develop` branch, not in `master`.
 * Check unit tests and add new if it's necessary.
 * Update docs and demo files if it's necessary.
+* Build dist files: `gulp`
 * Create pull request =)
 
 ## Development flow
