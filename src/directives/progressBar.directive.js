@@ -5,6 +5,8 @@
         .module('pg.progress-bars')
         .directive('pgProgressBar', progressBarDirective);
 
+    progressBarDirective.$inject = ['ProgressBarsSettings', 'ProgressBarsStorage', 'ProgressBarFactory'];
+
     function progressBarDirective(ProgressBarsSettings, ProgressBarsStorage, ProgressBarFactory) {
         var providerClassNames = ProgressBarsSettings.getClasses();
         var classNames = {
@@ -15,7 +17,6 @@
 
         return {
             restrict: 'EA',
-            replace: true,
             template: '<div class="' + classNames.container + '"><div class="' + classNames.bar + '"></div></div>',
             scope: {
                 name: '@',

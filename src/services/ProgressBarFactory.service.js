@@ -5,6 +5,8 @@
         .module('pg.progress-bars')
         .factory('ProgressBarFactory', ProgressBarFactory);
 
+    ProgressBarFactory.$inject = [];
+
     function ProgressBarFactory() {
         return function(name, elements, options) {
             return new ProgressBar(name, elements, options);

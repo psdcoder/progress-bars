@@ -5,6 +5,8 @@
         .module('pg.progress-bars')
         .provider('ProgressBarsSettings', ProgressBarsSettingsProvider);
 
+    ProgressBarsSettingsProvider.$inject = [];
+
     function ProgressBarsSettingsProvider() {
         var classNames = {};
 
