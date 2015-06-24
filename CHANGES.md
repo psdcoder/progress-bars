@@ -1,3 +1,10 @@
+## 0.2.1
+
+### Enhancements
+* Removed `replace` attribute from directive as is deprecated and will be removed in next major release.
+* Added support of **ng-strict-di** mode for non-minified version of plugin.
+
+
 ## 0.2.0
 
 ### Breaking Changes
