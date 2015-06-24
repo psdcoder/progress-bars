@@ -59,6 +59,7 @@ angular.module('pg.progress-bars', []);
             }
         };
     }
+    progressBarDirective.$inject = ["ProgressBarsSettings", "ProgressBarsStorage", "ProgressBarFactory"];
 })();
 
 (function () {
